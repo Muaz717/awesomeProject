@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+
 	var wg sync.WaitGroup
 	c := make(chan string, 3)
 

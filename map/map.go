@@ -18,6 +18,9 @@ func main() {
 			mu.Unlock()
 		}()
 	}
+
 	time.Sleep(1 * time.Second)
+
 	fmt.Println(m)
+
 }

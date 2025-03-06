@@ -9,6 +9,7 @@ func main() {
 	ExampleByteSlice()
 	fmt.Print("\n")
 	ExampleRune()
+
 }
 
 func ExampleString() {

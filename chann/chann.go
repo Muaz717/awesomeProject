@@ -7,7 +7,11 @@ import (
 )
 
 func main() {
+	closeChannel()
 
+}
+
+func wgWait() {
 	var wg sync.WaitGroup
 	c := make(chan string, 3)
 
@@ -27,5 +31,24 @@ func main() {
 	for val := range c {
 		fmt.Println(val)
 	}
+}
 
+func closeChannel() {
+	c := make(chan string, 1)
+
+	go func() {
+		defer close(c)
+		c <- "one"
+		c <- "two"
+	}()
+
+	for {
+		value, ok := <-c
+		if !ok {
+			fmt.Println("Channel is closed")
+			break
+		}
+
+		fmt.Println(value)
+	}
 }
